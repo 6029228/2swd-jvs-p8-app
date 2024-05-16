@@ -1,19 +1,29 @@
-const {Sequelize, Datatypes} =require('sequelize');
-const sequelize = new Sequelize('mysql::memory:');
+import {Sequelize, DataTypes, Model}  from 'sequelize';
+import { database } from '../database.js';
 
-const User = sequelize.define(
-    'User',{
+export class User extends Model {} 
+    User.init(
+        {
         username:{
-            type: Datatypes.STRING,
-            allowNull: false,
+            type: DataTypes.STRING,
+            
         },email:{
-            type: Datatypes.STRING,
-            allowNull: false,
+            type: DataTypes.STRING,
+            
         },
-        password:{
-            type: Datatypes.STRING,
+        passwordHash:{
+            type: DataTypes.STRING,
+        },
+        createdAt: {
             allowNull: false,
-        }
-    }
-)
-console.log(User === sequelize.models.User);
+            type: Sequelize.DATE,
+        },
+        updatedAt: {
+            allowNull: false,
+            type: Sequelize.DATE,
+        },
+    },{
+    sequelize: database,
+    modelName: "User"
+}
+);
