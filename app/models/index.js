@@ -1,5 +1,9 @@
 'use strict';
-
+// import {Sequelize}  from 'sequelize';
+// import {path}  from 'path';
+// import {fs}  from 'fs';
+// import {process}  from 'process';
+// import {config}  from "__dirname + '/../../config/sequelize.json'[env]";
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');

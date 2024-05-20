@@ -1,9 +1,15 @@
 import {Sequelize, DataTypes, Model}  from 'sequelize';
 import { database } from '../database.js';
 
-export class User extends Model {} 
+ class User extends Model {} 
     User.init(
         {
+        id:{
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+            type: Sequelize.INTEGER,
+        },
         username:{
             type: DataTypes.STRING,
             
@@ -17,13 +23,16 @@ export class User extends Model {}
         createdAt: {
             allowNull: false,
             type: Sequelize.DATE,
+            defaultValue: DataTypes.NOW,
         },
         updatedAt: {
             allowNull: false,
             type: Sequelize.DATE,
+            onUpdate: DataTypes.NOW,
         },
     },{
     sequelize: database,
     modelName: "User"
 }
 );
+export default User;

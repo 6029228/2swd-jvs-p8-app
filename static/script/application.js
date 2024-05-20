@@ -1,5 +1,8 @@
-import { User } from "./user.js";
+//import { User } from "./user.js";
+import { User as User1} from "../../app/models/user.js";
 
+
+const User = await User1.findByPk(1);
 export class Application {
     user = null;
 
@@ -15,6 +18,7 @@ export class Application {
         document.querySelector("#main-header .login").addEventListener("click", (event) => {
             event.preventDefault();
             this.login("admin", "admin");
+            //, "test@outlook.com"
         });
 
         document.querySelector("#main-header .logout").addEventListener("click", (event) => {
@@ -42,11 +46,12 @@ export class Application {
 
         }
     }
-
-    login(username, password) {
+    // email
+    login(username, password,) {
         this.user = new User({
             username: username,
             password: password,
+            // email: email,
         });
 
         this.updateHTML();
